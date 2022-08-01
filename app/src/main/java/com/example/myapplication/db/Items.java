@@ -31,6 +31,9 @@ public class Items {
     @ColumnInfo(name = "image")
     public String image;
 
+    @ColumnInfo(name = "id")
+    public int id;
+
 
 }
 

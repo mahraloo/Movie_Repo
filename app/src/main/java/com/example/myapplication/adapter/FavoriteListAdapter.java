@@ -16,36 +16,36 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.Models.MovieModel;
 import com.example.myapplication.R;
+import com.example.myapplication.db.Items;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Viewholder>{
+public class FavoriteListAdapter extends RecyclerView.Adapter<FavoriteListAdapter.Viewholder>{
 
-    private List<MovieModel> mMovies = new ArrayList<>();
+    private List<Items> mMovies = new ArrayList<>();
     private Context mContext;
     private MyClickListner clickListner;
-    public MoviesListAdapter(List<MovieModel> mMovies, Context mContext,MyClickListner clickListner) {
+    public FavoriteListAdapter(List<Items> mMovies, Context mContext,MyClickListner clickListner) {
         this.mMovies = mMovies;
         this.mContext = mContext;
         this.clickListner = clickListner;
     }
 
-    public void setMovieList(List<MovieModel> mMovies){
+    public void setMovieList(List<Items> mMovies){
         this.mMovies = mMovies;
         notifyDataSetChanged();
     }
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item_list,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fav_list,parent,false);
         Viewholder vh = new Viewholder(view);
         return vh;
     }
 
-    @SuppressLint("RecyclerView")
     @Override
-    public void onBindViewHolder(@NonNull Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull Viewholder holder, @SuppressLint("RecyclerView") int position) {
 
 //        holder.title.setText(mMovies.get(position).getTitle());
 
@@ -54,14 +54,14 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
                 .error(R.drawable.ic_launcher_background);
         Glide.with(mContext)
                 .setDefaultRequestOptions(options)
-                .load(mMovies.get(position).getImage())
+                .load(mMovies.get(position).image)
                 .apply(RequestOptions.centerCropTransform())
                 .into(holder.image);
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickListner.ClickMoveItem(mMovies.get(position));
+                clickListner.ClickFaveItem(mMovies.get(position));
             }
         });
 

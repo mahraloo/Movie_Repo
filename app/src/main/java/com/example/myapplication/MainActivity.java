@@ -30,6 +30,7 @@ import java.util.List;
 
  public class MainActivity extends AppCompatActivity {
      BottomNavigationView navigationView;
+     public static MoviewLisViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,9 @@ import java.util.List;
         navigationView = findViewById(R.id.bottom_nav);
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container,new HomeFragment()).commit();
         navigationView.setSelectedItemId(R.id.nav_home);
+        viewModel = new ViewModelProvider(this).get(MoviewLisViewModel.class);
+        viewModel.InitDB(this);
+        viewModel.makeApiCall();
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

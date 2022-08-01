@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.fragments.HomeFragment.viewModel;
+import static com.example.myapplication.MainActivity.viewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.Models.MovieModel;
 import com.example.myapplication.ViewModels.MoviewLisViewModel;
+import com.example.myapplication.db.Items;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.List;
@@ -61,6 +62,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         id = getIntent().getIntExtra("id",0);
         MovieModel model = viewModel.getMovieDetailWithId(id);
+        Items items = viewModel.getFavWithId(id);
         if(model!=null){
             duration.setText(model.getDuration());
             rate.setText(model.getRate());
@@ -93,24 +95,32 @@ public class MainActivity2 extends AppCompatActivity {
                     dark = false;
                     break;
             }
+            if (items!=null){
+                    fav.setImageResource(R.drawable.fav_light_2);
+                    fav_check = true;
 
+            }
             fav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (dark){
                         if (fav_check){
                             fav.setImageResource(R.drawable.fav_dark_1);
+                            viewModel.DeletefromFavorite(model);
                             fav_check = false;
                         }else{
                             fav.setImageResource(R.drawable.fav_light_2);
+                            viewModel.insertFavoriteDB(model);
                             fav_check = true;
                         }
                     }else{
                         if (fav_check){
                             fav.setImageResource(R.drawable.fav_light_1);
+                            viewModel.DeletefromFavorite(model);
                             fav_check = false;
                         }else{
                             fav.setImageResource(R.drawable.fav_light_2);
+                            viewModel.insertFavoriteDB(model);
                             fav_check = true;
                         }
                     }

@@ -1,5 +1,7 @@
 package com.example.myapplication.fragments;
 
+import static com.example.myapplication.MainActivity.viewModel;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -22,6 +24,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.ViewModels.MoviewLisViewModel;
 import com.example.myapplication.adapter.MoviesListAdapter;
 import com.example.myapplication.adapter.MyClickListner;
+import com.example.myapplication.db.Items;
 
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class HomeFragment extends Fragment implements MyClickListner {
     private List<MovieModel> movieModelList;
     private RecyclerView recyclerView;
     private MoviesListAdapter adapterMovie;
-    public static MoviewLisViewModel viewModel;
+
 
     private View v;
 
@@ -57,7 +60,6 @@ public class HomeFragment extends Fragment implements MyClickListner {
         adapterMovie = new MoviesListAdapter(movieModelList,getActivity(), this);
         recyclerView.setAdapter(adapterMovie);
 
-        viewModel = new ViewModelProvider(getActivity()).get(MoviewLisViewModel.class);
         viewModel.getMovieListObserver().observe(getActivity(), new Observer<List<MovieModel>>() {
             @Override
             public void onChanged(List<MovieModel> movieModels) {
@@ -71,16 +73,21 @@ public class HomeFragment extends Fragment implements MyClickListner {
             }
         });
 
-        viewModel.makeApiCall();
+
 
         return v;
     }
 
+
     @Override
     public void ClickMoveItem(MovieModel model) {
-//        Toast.makeText(getContext(), model.getTitle(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), MainActivity2.class);
         intent.putExtra("id",model.getId());
         getActivity().startActivity(intent);
+    }
+
+    @Override
+    public void ClickFaveItem(Items model){
+        //TODO...Nothing
     }
 }
