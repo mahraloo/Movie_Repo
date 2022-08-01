@@ -1,0 +1,73 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/bg</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="backGound">
+        <item name="android:background">@color/bg</item>
+    </style>
+
+    <style name="first_text">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+
+    <style name="second_text">
+        <item name="android:textColor">@color/text_second_color</item>
+        <item name="android:fontFamily">@font/it</item>
+    </style>
+
+    <style name="bigtext">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/date</item>
+        <item name="android:fontFamily">@font/black</item>
+    </style>
+
+    <style name="imagemore">
+        <item name="android:src">@drawable/ic_baseline_more_horiz_24_white</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="cardview">
+        <item name="android:backgroundTint">@color/second_bg</item>
+    </style>
+
+    <style name="imagemore2">
+        <item name="android:src">@drawable/ic_baseline_keyboard_arrow_right_24</item>
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+
+    <style name="arrowback">
+        <item name="android:src">@drawable/ic_baseline_arrow_back_ios_24_white</item>
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+    <style name="customRoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+
+
+    <style name="gradient_watch">
+        <item name="android:background">@drawable/watch_gradient</item>
+    </style>
+
+    <style name="fav_btn">
+        <item name="android:src">@drawable/fav_btn_selector_dark</item>
+    </style>
+    <style name="nav_bottom">
+        <item name="android:background">@drawable/round_corner_dark</item>
+    </style>
+</resources>

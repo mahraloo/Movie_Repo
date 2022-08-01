@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="bg" format="reference"/>
+    <attr name="second_bg" format="reference"/>
+    <attr name="text_first" format="reference"/>
+    <attr name="text_second" format="reference"/>
+    <attr name="itemselect" format="reference"/>
+
+</resources>
